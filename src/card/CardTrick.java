@@ -4,29 +4,44 @@
  */
 package card;
 
-/**
- * A class that fills a magic hand of 7 cards with random Card Objects
- * and then asks the user to pick a card and searches the array of cards
- * for the match to the user's card. To be used as starting code in ICE 1
- * @author srinivsi
- */
+import java.util.Random;
+import java.util.Scanner;
+
 public class CardTrick {
-    
-    public static void main(String[] args)
-    {
-        Card[] magicHand = new Card[7];
-        
-        for (int i=0; i<magicHand.length; i++)
-        {
-            Card c = new Card();
-            //c.setValue(insert call to random number generator here)
-            //c.setSuit(Card.SUITS[insert call to random number between 0-3 here])
+    public static void main(String[] args) {
+        Card[] magicHand = new Card[7]; // Array to hold 7 cards
+        Random random = new Random();
+
+        // Generate 7 random cards and add to the magicHand
+        for (int i = 0; i < magicHand.length; i++) {
+            int value = random.nextInt(13) + 1; // 1-13 for Ace to King
+            String suit = Card.SUITS[random.nextInt(Card.SUITS.length)]; // Random suit
+            magicHand[i] = new Card(suit, value);
         }
-        
-        //insert code to ask the user for Card value and suit, create their card
-        // and search magicHand here
-        //Then report the result here
-        // add one luckcard hard code 2,clubs
+
+        try ( // Scanner to get user input
+                Scanner scanner = new Scanner(System.in)) {
+            System.out.println("Pick a card! Enter a value (1-13 where 1 is Ace and 13 is King):");
+            int userValue = scanner.nextInt();
+            System.out.println("Enter a suit (Hearts, Diamonds, Spades, Clubs):");
+            String userSuit = scanner.next();
+            
+            // Check if the user's card is in the magic hand
+            boolean found = false;
+            for (Card card : magicHand) {
+                if (card.getValue() == userValue && card.getSuit().equalsIgnoreCase(userSuit)) {
+                    found = true;
+                    break;
+                }
+            }
+            
+            // Output the result
+            if (found) {
+                System.out.println("Your card is in the magic hand!");
+            } else {
+                System.out.println("Your card is not in the magic hand.");
+            }
+        }
     }
-    
 }
+
