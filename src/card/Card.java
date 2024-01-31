@@ -9,42 +9,43 @@ package card;
  *
  * @author srinivsi
  * @modifier Aakashdeep Singh
+ * student number: 991715817
  */
 
 public class Card {
 
-    private String suit; // Clubs, Spades, Diamonds, Hearts
-    private int value; // 1-13 for Ace to King
+    private String suit; 
+    private int value; 
 
     public static final String[] SUITS = {"Hearts", "Diamonds", "Spades", "Clubs"};
 
-    // Constructor to create a card with a suit and value
+
     public Card(String suit, int value) {
         this.suit = suit;
         this.value = value;
     }
 
-    // Returns the suit of the card
+
     public String getSuit() {
         return suit;
     }
 
-    // Sets the suit of the card
+
     public void setSuit(String suit) {
         this.suit = suit;
     }
 
-    // Returns the value of the card
+
     public int getValue() {
         return value;
     }
 
-    // Sets the value of the card
+
     public void setValue(int value) {
         this.value = value;
     }
 
-    // Returns a string representation of the card
+ 
 
     /**
      *
