@@ -16,7 +16,7 @@ public class CardTrick {
         
         Card luckyCard = new Card("Spades", 1); 
 
-        /
+        
         for (int i = 0; i < magicHand.length; i++) {
             int value = random.nextInt(13) + 1; 
             String suit = Card.SUITS[random.nextInt(Card.SUITS.length)]; 
